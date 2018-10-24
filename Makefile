@@ -1,10 +1,18 @@
-compile:
-	(cd src && javac -verbose -classpath ${HADOOP_CLASSPATH} -d ../build WordCount.java)
-	(cd build && jar -cvf WordCount.jar .)
+MAIN=WordCount
+SRC=src
+BUILD=build
+EXEC_PARAMETERS=input/input.txt output/
 
-run:
-	rm -rf build/output
-	(cd build && /usr/local/hadoop-2.8.5/bin/hadoop jar WordCount.jar WordCount ../input output)
+CLASSES=$(SRC)/*.java
 
-clean:
-	rm src/*.class src/*.jar
+%.class: %.java
+	javac -classpath ${HADOOP_CLASSPATH} -d ./$(BUILD) $*.java
+
+default: classes
+	(cd $(BUILD) && jar -cvf $(MAIN).jar .)
+
+classes: $(CLASSES:.java=.class)
+
+exec:
+	rm -rf output
+	/usr/local/hadoop-2.8.5/bin/hadoop jar $(BUILD)/$(MAIN).jar $(MAIN) $(EXEC_PARAMETERS)
