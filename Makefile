@@ -1,7 +1,7 @@
-MAIN=WordCount
+MAIN=BayesClassifier
 SRC=src
 BUILD=build
-EXEC_PARAMETERS=input/input.txt output/
+EXEC_PARAMETERS=input/example.txt output/
 # HADOOP=/usr/local/hadoop-2.8.5/bin/hadoop
 
 CLASSES=$(SRC)/*.java

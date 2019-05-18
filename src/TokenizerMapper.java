@@ -17,12 +17,13 @@ public class TokenizerMapper
     private final static IntWritable one = new IntWritable(1);
     private Text word = new Text();
 
-    public void map(Object key, Text value, Context context
-                    ) throws IOException, InterruptedException {
+    public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
         StringTokenizer itr = new StringTokenizer(value.toString());
+
         while (itr.hasMoreTokens()) {
-        word.set(itr.nextToken());
-        context.write(word, one);
+            word.set(itr.nextToken());
+            context.write(word, one);
         }
+        
     }
 }
