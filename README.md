@@ -1,9 +1,9 @@
 # java-mapreduce-project
 MapReduce small project for "Virtualisation and Cloud computing" course at UNIGE (Genova)
 
-## For now...
+## Project
 
-For now this repo only contains the basic hadoop example "count word" to test configuration...
+This project takes a bunch of data and estimates the parameters for a Bayesian Classifier assuming a normal distribution law for the features.
 
 ## Makefile
 
